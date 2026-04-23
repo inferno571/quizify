@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import React, { useState } from 'react';
-import { Quiz } from '../types';
+import { Quiz } from '../lib/types';
 import { CheckCircle, XCircle, RotateCcw, Copy, Star, Check, AlertTriangle } from 'lucide-react';
 
 interface ResultsScreenProps {

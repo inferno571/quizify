@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Quiz, QuizAttempt } from '../types';
+import { Quiz, QuizAttempt } from '../lib/types';
 import { FileText, Loader2, CheckCircle, Clock, ArrowLeft, Sparkles, Brain, FileUp } from 'lucide-react';
 import { QuizMode } from './LandingScreen';
 

@@ -1,4 +1,4 @@
-import { Quiz } from "../types";
+import { Quiz } from "./types";
 
 /**
  * Convert a File to a base64 string (without the data URI prefix).

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Quiz } from '../types';
+import { Quiz } from '../lib/types';
 import { Info, UserCircle, Star } from 'lucide-react';
 
 interface QuizScreenProps {
@@ -274,7 +274,9 @@ export function QuizScreen({ quiz, onComplete }: QuizScreenProps) {
           {/* Palette Grid */}
           <div className="p-3 bg-[#e8ecef] text-[#34495e] font-bold text-xs shrink-0 flex justify-between items-center border-b border-gray-300">
             <span>Question Palette:</span>
-            <Info className="w-4 h-4 text-blue-500 cursor-pointer" title="Navigate to any question directly by clicking on the number." />
+            <span title="Navigate to any question directly by clicking on the number.">
+              <Info className="w-4 h-4 text-blue-500 cursor-pointer" />
+            </span>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 bg-white grid grid-cols-4 gap-3 content-start">
