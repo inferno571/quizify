@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: quizify-backend
+    env: go
+    rootDir: backend
+    buildCommand: go build -o server main.go
+    startCommand: ./server
+    envVars:
+      - key: PORT
+        value: 8080
