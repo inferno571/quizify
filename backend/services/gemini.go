@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"quizify-backend/models"
 
@@ -57,6 +58,13 @@ func GenerateContent(ctx context.Context, apiKey string, files []models.FileInpu
 	if text == "" {
 		return nil, fmt.Errorf("empty response text from Gemini")
 	}
+
+	// Clean potential markdown blocks from Gemini response
+	text = strings.TrimSpace(text)
+	text = strings.TrimPrefix(text, "```json")
+	text = strings.TrimPrefix(text, "```")
+	text = strings.TrimSuffix(text, "```")
+	text = strings.TrimSpace(text)
 
 	var parsed models.QuizResponse
 	if err := json.Unmarshal([]byte(text), &parsed); err != nil {

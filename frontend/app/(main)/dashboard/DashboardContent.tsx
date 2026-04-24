@@ -42,7 +42,7 @@ export default function DashboardContent() {
       updateQuizzes([newQuiz, ...quizzes]);
     } catch (err: any) {
       console.error(err);
-      setError("Failed to parse the documents. Please make sure they are valid PDFs containing questions.");
+      setError(err instanceof Error ? err.message : "Failed to parse the documents. Please make sure they are valid PDFs containing questions.");
     } finally {
       setIsUploading(false);
     }
@@ -62,7 +62,7 @@ export default function DashboardContent() {
       updateQuizzes([newQuiz, ...quizzes]);
     } catch (err: any) {
       console.error(err);
-      setError("Failed to generate quiz from the study material. Please try again or upload different content.");
+      setError(err instanceof Error ? err.message : "Failed to generate quiz from the study material. Please try again or upload different content.");
     } finally {
       setIsUploading(false);
     }
