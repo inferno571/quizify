@@ -13,10 +13,16 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(body),
     });
 
-    const data = await backendRes.json().catch(() => ({ error: "Failed to parse backend response" }));
+    const rawText = await backendRes.text();
+    let data;
+    try {
+      data = rawText ? JSON.parse(rawText) : { error: "Empty response from backend server (possible crash/panic)." };
+    } catch (e) {
+      data = { error: `Invalid JSON from backend: ${rawText.substring(0, 200)}...` };
+    }
 
     if (!backendRes.ok) {
-      console.error("[API Route] Backend error status:", backendRes.status, "Data:", data);
+      console.error("[API Route] Backend error status:", backendRes.status, "Raw Response:", rawText.substring(0, 200));
       return NextResponse.json(data, { status: backendRes.status });
     }
 
