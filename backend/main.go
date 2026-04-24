@@ -22,13 +22,18 @@ func main() {
 
 	r := gin.Default()
 
-	// CORS to allow Next.js during development
+	// CORS configuration
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"},
-		AllowMethods:     []string{"POST", "OPTIONS"},
+		AllowOrigins:     []string{"*"}, // In production, replace with your specific frontend domain
+		AllowMethods:     []string{"POST", "GET", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
 		AllowCredentials: true,
 	}))
+
+	// Health check route
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "ok", "message": "Quizify Go API is running"})
+	})
 
 	// API routes
 	api := r.Group("/api")

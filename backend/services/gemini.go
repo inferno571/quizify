@@ -44,7 +44,7 @@ func GenerateContent(ctx context.Context, apiKey string, files []models.FileInpu
 		ResponseSchema:   schema,
 	}
 
-	resp, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, config)
+	resp, err := client.Models.GenerateContent(ctx, "gemini-flash-latest", contents, config)
 	if err != nil {
 		return nil, err
 	}
@@ -65,4 +65,3 @@ func GenerateContent(ctx context.Context, apiKey string, files []models.FileInpu
 
 	return &parsed, nil
 }
-
