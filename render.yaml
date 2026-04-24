@@ -17,4 +17,4 @@ services:
     startCommand: npm start
     envVars:
       - key: API_URL
-        value: http://quizify-backend:8080
+        value: https://quizify-1-15tm.onrender.com
