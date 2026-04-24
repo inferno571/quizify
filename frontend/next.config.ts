@@ -1,14 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${process.env.API_URL || 'http://localhost:8080'}/api/:path*`,
-      },
-    ];
-  },
+  // Rewrites removed in favor of explicit Next.js Route Handlers 
+  // (app/api/extract-quiz/route.ts and app/api/generate-quiz/route.ts)
+  // to ensure robust 404/500 logging in deployment.
 };
 
 export default nextConfig;
